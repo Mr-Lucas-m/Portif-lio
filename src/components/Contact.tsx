@@ -28,19 +28,19 @@ const Contact: React.FC = () => {
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      value: 'lucas@example.com',
-      link: 'mailto:lucas@example.com'
+      value: 'ti.lucas.mr@gmail.com',
+      link: 'mailto:ti.lucas.mr@gmail.com'
     },
     {
       icon: <Phone size={24} />,
       title: 'Telefone',
-      value: '+55 (11) 99999-9999',
-      link: 'tel:+5511999999999'
+      value: '+55 (91) 98824-6476',
+      link: 'tel:+5591988246476'
     },
     {
       icon: <MapPin size={24} />,
       title: 'Localização',
-      value: 'São Paulo, Brasil',
+      value: 'Pará, Brasil',
       link: null
     }
   ];
@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
                 </h3>
                 <div className="flex space-x-4">
                   <a 
-                    href="https://github.com" 
+                    href="https://github.com/Mr-Lucas-m" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110"
@@ -105,7 +105,7 @@ const Contact: React.FC = () => {
                     <Github size={24} className="text-gray-700 dark:text-gray-300" />
                   </a>
                   <a 
-                    href="https://linkedin.com" 
+                    href="https://www.linkedin.com/in/lucas-marques-dev-back-end?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110"

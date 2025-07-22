@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
                 Lucas Marques
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Desenvolvedor Full Stack apaixonado por criar soluções digitais inovadoras.
+                Desenvolvedor por criar soluções digitais inovadoras.
               </p>
             </div>
             
