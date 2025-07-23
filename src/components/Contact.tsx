@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import { MessageCircle} from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,20 +10,20 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value
+  //   });
+  // };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aqui você pode adicionar a lógica para enviar o formulário
-    console.log('Form submitted:', formData);
-    alert('Mensagem enviada com sucesso!');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // Aqui você pode adicionar a lógica para enviar o formulário
+  //   console.log('Form submitted:', formData);
+  //   alert('Mensagem enviada com sucesso!');
+  //   setFormData({ name: '', email: '', subject: '', message: '' });
+  // };
 
   const contactInfo = [
     {
@@ -112,16 +113,27 @@ const Contact: React.FC = () => {
                   >
                     <Linkedin size={24} className="text-gray-700 dark:text-gray-300" />
                   </a>
+                  <a 
+                    href="https://wa.me/5591988246476"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-3 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110"
+                  >
+                    <MessageCircle size={24} className="text-gray-700 dark:text-gray-300" />
+                  </a>
                 </div>
               </div>
             </div>
-
             {/* Contact Form */}
             <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 Envie uma Mensagem
               </h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                action="https://usebasin.com/f/7cf169a7944f"
+                method="POST"
+                className="space-y-6"
+              >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -131,8 +143,6 @@ const Contact: React.FC = () => {
                       type="text"
                       id="name"
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                     />
@@ -145,8 +155,6 @@ const Contact: React.FC = () => {
                       type="email"
                       id="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                     />
@@ -160,8 +168,6 @@ const Contact: React.FC = () => {
                     type="text"
                     id="subject"
                     name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                   />
@@ -174,12 +180,14 @@ const Contact: React.FC = () => {
                     id="message"
                     name="message"
                     rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none transition-colors duration-300"
                   ></textarea>
                 </div>
+
+                {/* Redireciona para uma página de "Obrigado" após envio */}
+                <input type="hidden" name="redirect" value="https://seusite.com/obrigado" />
+
                 <button
                   type="submit"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
