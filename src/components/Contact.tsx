@@ -9,22 +9,6 @@ const Contact: React.FC = () => {
     subject: '',
     message: ''
   });
-
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value
-  //   });
-  // };
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   // Aqui você pode adicionar a lógica para enviar o formulário
-  //   console.log('Form submitted:', formData);
-  //   alert('Mensagem enviada com sucesso!');
-  //   setFormData({ name: '', email: '', subject: '', message: '' });
-  // };
-
   const contactInfo = [
     {
       icon: <Mail size={24} />,
@@ -130,8 +114,28 @@ const Contact: React.FC = () => {
                 Envie uma Mensagem
               </h3>
               <form
-                action="https://usebasin.com/f/7cf169a7944f"
-                method="POST"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  try {
+                    const response = await fetch("http://localhost:8000/contact", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(formData),
+                    });
+
+                    if (response.ok) {
+                      alert("Mensagem enviada com sucesso!");
+                      setFormData({ name: "", email: "", subject: "", message: "" });
+                    } else {
+                      alert("Erro ao enviar mensagem.");
+                    }
+                  } catch (err) {
+                    console.error("Erro:", err);
+                    alert("Erro inesperado ao enviar.");
+                  }
+                }}
                 className="space-y-6"
               >
                 <div className="grid md:grid-cols-2 gap-6">
@@ -144,6 +148,8 @@ const Contact: React.FC = () => {
                       id="name"
                       name="name"
                       required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                     />
                   </div>
@@ -156,6 +162,8 @@ const Contact: React.FC = () => {
                       id="email"
                       name="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                     />
                   </div>
@@ -169,6 +177,8 @@ const Contact: React.FC = () => {
                     id="subject"
                     name="subject"
                     required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300"
                   />
                 </div>
@@ -181,12 +191,11 @@ const Contact: React.FC = () => {
                     name="message"
                     rows={6}
                     required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white resize-none transition-colors duration-300"
                   ></textarea>
                 </div>
-
-                {/* Redireciona para uma página de "Obrigado" após envio */}
-                <input type="hidden" name="redirect" value="https://seusite.com/obrigado" />
 
                 <button
                   type="submit"
