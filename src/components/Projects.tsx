@@ -4,11 +4,20 @@ import { ExternalLink, Github, Eye } from 'lucide-react';
 const Projects: React.FC = () => {
   const projects = [
     {
+    title: 'MFast',
+    description: 'Sistema de Retrieval Augmented Generation (RAG) especializado em suporte técnico para indústria de hardware. Transforma manuais técnicos, documentações e procedimentos em um assistente virtual inteligente capaz de responder consultas técnicas com base na documentação oficial. Desenvolvido com arquitetura moderna que inclui processamento de documentos, embeddings vetoriais e geração de respostas contextualizadas, garantindo precisão técnica e confiabilidade nas informações fornecidas.',
+    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800',
+    technologies: ['Python', 'FastAPI', 'Node.js', 'ChromaDB', 'Hugging Face', 'LangChain', 'React', 'Tailwind CSS', 'Maritaca.ai'],
+    github: 'https://github.com/Mr-Lucas-m/mfast-chat',
+    live: 'https://mfast-demo.vercel.app',
+    featured: true
+    },
+    {
       title: 'MonFast',
       description: 'Sistema de monitoramento remoto de conexões com bancos de dados, inicialmente aplicado a unidades FAB (como TOC, SIZA, STM etc.), com alertas automáticos por e-mail e WhatsApp em caso de falha de conexão. O projeto foi desenvolvido por Lucas Marques durante o estágio no Frango Americano, visando garantir maior confiabilidade nos sistemas distribuídos entre as filiais. A estrutura do sistema é flexível e pode ser facilmente adaptada a diferentes empresas, serviços, tipos de banco de dados ou critérios de alerta, conforme a necessidade de cada cliente.',
       image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Python', 'Fastapi', 'PyODBC', 'Schedule', 'Twilio'],
-      github: 'https://github.com',
+      github: 'https://github.com/Mr-Lucas-m/MonFast',
       live: 'https://example.com',
       featured: true
     },

@@ -127,8 +127,8 @@ const Contact: React.FC = () => {
 
                     if (response.ok) {
                       alert("Mensagem enviada com sucesso!");
-                      setFormData({ name: "", email: "", subject: "", message: "" });
                     } else {
+                      setFormData({ name: "", email: "", subject: "", message: "" });
                       alert("Erro ao enviar mensagem.");
                     }
                   } catch (err) {
