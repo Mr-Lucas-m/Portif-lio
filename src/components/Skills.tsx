@@ -25,11 +25,10 @@ const Skills: React.FC = () => {
     },
     {
       icon: <Globe size={32} />,
-      title: 'DevOps & Cloud',
+      title: 'DevOps',
       skills: [
         // { name: 'AWS / Azure', level: 80 },
         { name: 'Docker', level: 52 },
-        { name: 'CI/CD', level: 78 },
         { name: 'Linux', level: 55 }
       ]
     }

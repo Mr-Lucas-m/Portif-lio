@@ -42,13 +42,13 @@ const About: React.FC = () => {
                 Minha Jornada
               </h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                Com mais de 2 anos de experiência em desenvolvimento web, tenho me dedicado a criar 
+                Com mais de 1 ano de experiência em desenvolvimento web, tenho me dedicado a criar 
                 soluções digitais que fazem a diferença.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              {/* <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 Acredito que a combinação de código limpo, design intuitivo e performance otimizada 
                 são fundamentais para criar produtos excepcionais que superam as expectativas dos usuários.
-              </p>
+              </p> */}
             </div>
             <div className="space-y-6">
               <div>
@@ -63,12 +63,12 @@ const About: React.FC = () => {
                   <div className="bg-blue-600 h-3 rounded-full" style={{ width: '61%' }}></div>
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">UI/UX Design</h4>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                   <div className="bg-purple-600 h-3 rounded-full" style={{ width: '56%' }}></div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
