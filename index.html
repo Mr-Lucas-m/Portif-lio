@@ -442,14 +442,10 @@
     ═══════════════════════════════ */
     #about { background: var(--bg-1); }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-      margin-top: 4rem;
+    .about-text {
+      max-width: 760px;
+      margin-top: 2.5rem;
     }
-
     .about-text p {
       color: var(--text-secondary);
       font-size: 1.05rem;
@@ -460,67 +456,6 @@
     .about-text p strong {
       color: var(--text-primary);
       font-weight: 500;
-    }
-
-    .about-highlights {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .highlight-card {
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--bg-2);
-      transition: border-color var(--transition), background var(--transition);
-    }
-    .highlight-card:hover {
-      border-color: var(--border-red);
-      background: var(--bg-3);
-    }
-    .highlight-icon {
-      width: 36px; height: 36px;
-      margin-bottom: 0.75rem;
-      color: var(--red-core);
-    }
-    .highlight-title {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-    .highlight-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* Bars */
-    .about-bars { display: flex; flex-direction: column; gap: 2rem; }
-
-    .bar-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
-    .bar-name { font-weight: 500; }
-    .bar-pct { color: var(--red-core); font-weight: 600; font-size: 0.85rem; }
-
-    .bar-track {
-      height: 3px;
-      background: var(--bg-4);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(to right, var(--red-deep), var(--red-core));
-      width: 0;
-      transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
     }
 
     /* ═══════════════════════════════
@@ -537,112 +472,64 @@
       gap: 2rem;
     }
 
-    .project-grid {
+    /* Project list (preview enxuta, sem imagens) */
+    .projects-list {
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-row {
       display: grid;
-      gap: 1.5rem;
+      grid-template-columns: auto 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
+      padding: 2.25rem 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
     }
+    .project-row:hover { background: var(--bg-2); }
 
-    .project-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg-1);
-      overflow: hidden;
-      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-    .project-card:hover {
-      border-color: var(--border-red);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px var(--red-glow);
-    }
-
-    .project-card.small-card {
-      grid-template-columns: 1fr;
-    }
-
-    .project-image {
-      position: relative;
-      overflow: hidden;
-      min-height: 240px;
-    }
-    .small-card .project-image { min-height: 180px; }
-
-    .project-image img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.4) saturate(0.5);
-      transition: filter var(--transition), transform 0.5s ease;
-    }
-    .project-card:hover .project-image img {
-      filter: brightness(0.55) saturate(0.7);
-      transform: scale(1.04);
-    }
-
-    .project-image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(139,11,29,0.2) 0%, transparent 60%);
-    }
-
-    .project-tag-featured {
-      position: absolute;
-      top: 1.25rem; left: 1.25rem;
-      padding: 0.25rem 0.7rem;
-      background: var(--red-core);
-      color: white;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 3px;
-    }
-
-    .project-content {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .small-card .project-content { padding: 1.75rem; }
-
-    .project-number {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--red-core);
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-title {
+    .project-row-num {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--red-core);
+      padding-top: 0.35rem;
+    }
+
+    .project-row-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+    .project-row-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 1rem;
     }
-    .small-card .project-title { font-size: 1.3rem; }
-
-    .project-desc {
+    .project-row-cat {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .project-row-desc {
       color: var(--text-secondary);
       font-size: 0.9rem;
-      line-height: 1.7;
+      line-height: 1.65;
       font-weight: 300;
-      flex: 1;
-      margin-bottom: 1.5rem;
-      /* Truncate long descriptions on large cards */
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      max-width: 640px;
+      margin-bottom: 1rem;
     }
 
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 1.75rem;
     }
     .project-tag {
       padding: 0.25rem 0.65rem;
@@ -654,11 +541,17 @@
       color: var(--text-muted);
       letter-spacing: 0.03em;
     }
+    .project-tag.highlight {
+      border-color: var(--border-red);
+      color: var(--red-core);
+    }
 
-    .project-links {
+    .project-row-links {
       display: flex;
-      align-items: center;
-      gap: 1.25rem;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.75rem;
+      white-space: nowrap;
     }
     .project-link {
       display: inline-flex;
@@ -673,12 +566,6 @@
     }
     .project-link:hover { color: var(--red-core); }
     .project-link svg { width: 15px; height: 15px; }
-
-    .small-projects-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
 
     /* ═══════════════════════════════
        SKILLS
@@ -724,26 +611,54 @@
       font-weight: 700;
     }
 
-    .skill-rows { display: flex; flex-direction: column; gap: 1.25rem; }
-    .skill-row-label {
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .skill-chip {
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: border-color var(--transition), color var(--transition);
+      cursor: default;
+    }
+    .skill-chip:hover { border-color: var(--border-red); color: var(--text-primary); }
+    .skill-chip.highlight {
+      border-color: var(--red-core);
+      color: var(--red-core);
+      font-weight: 600;
+    }
+
+    /* Certificações */
+    .cert-section {
+      margin-top: 2rem;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-2);
+      grid-column: 1 / -1;
+    }
+    .cert-item {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.4rem;
+      align-items: center;
+      gap: 1rem;
     }
-    .skill-row-name { font-size: 0.875rem; font-weight: 400; color: var(--text-secondary); }
-    .skill-row-pct { font-size: 0.8rem; font-weight: 600; color: var(--red-core); }
-    .skill-bar-track {
-      height: 2px;
-      background: var(--bg-4);
-      border-radius: 1px;
-      overflow: hidden;
+    .cert-icon {
+      width: 40px; height: 40px;
+      border: 1px solid var(--border-red);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red-core);
+      flex-shrink: 0;
     }
-    .skill-bar-fill {
-      height: 100%;
-      border-radius: 1px;
-      background: linear-gradient(to right, var(--red-deep), var(--red-core));
-      width: 0;
-      transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
+    .cert-icon svg { width: 20px; height: 20px; }
+    .cert-name { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
+    .cert-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
     }
 
     .tools-section {
@@ -788,12 +703,11 @@
     ═══════════════════════════════ */
     #contact { background: var(--bg-0); }
 
-    .contact-wrapper {
+    .contact-methods {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 4rem;
-      align-items: start;
-      margin-top: 4rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3.5rem;
     }
 
     .contact-info-item {
@@ -804,7 +718,6 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--bg-1);
-      margin-bottom: 1rem;
       transition: border-color var(--transition);
       text-decoration: none;
     }
@@ -836,8 +749,9 @@
 
     .contact-socials {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.75rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     .contact-social-btn {
       display: flex;
@@ -858,90 +772,6 @@
       border-color: var(--border-red);
       color: var(--text-primary);
     }
-
-    /* Form */
-    .contact-form-card {
-      padding: 2.5rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg-1);
-    }
-
-    .form-group { margin-bottom: 1.5rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-    label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      transition: border-color var(--transition), box-shadow var(--transition);
-      outline: none;
-    }
-    input::placeholder, textarea::placeholder { color: var(--text-muted); }
-    input:focus, textarea:focus {
-      border-color: var(--red-core);
-      box-shadow: 0 0 0 3px var(--red-glow);
-    }
-    textarea { resize: none; height: 130px; }
-
-    .form-submit {
-      width: 100%;
-      padding: 1rem;
-      background: var(--red-core);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
-    }
-    .form-submit:hover {
-      background: #d91730;
-      box-shadow: 0 0 30px rgba(192,21,42,0.35);
-      transform: translateY(-1px);
-    }
-
-    .form-submit svg { width: 18px; height: 18px; }
-
-    /* Toast */
-    #toast {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      padding: 0.9rem 1.5rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      z-index: 999;
-      transform: translateY(80px);
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-    #toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    #toast.success { background: #0f3d1c; border: 1px solid #1a6b2f; color: #5dde87; }
-    #toast.error { background: #3d0f14; border: 1px solid var(--border-red); color: #f07080; }
 
     /* ═══════════════════════════════
        FOOTER
@@ -983,8 +813,7 @@
        RESPONSIVE
     ═══════════════════════════════ */
     @media (max-width: 1024px) {
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .contact-wrapper { grid-template-columns: 1fr; }
+      .contact-methods { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
@@ -993,14 +822,14 @@
 
       .hero-title { font-size: clamp(2.8rem, 12vw, 5rem); }
 
-      .project-card { grid-template-columns: 1fr; }
-      .small-projects-row { grid-template-columns: 1fr; }
+      .project-row {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 2rem 0.25rem;
+      }
+      .project-row-links { flex-direction: row; align-items: center; }
 
       .skills-layout { grid-template-columns: 1fr; }
-
-      .about-highlights { grid-template-columns: 1fr; }
-
-      .form-row { grid-template-columns: 1fr; }
 
       .footer-inner { flex-direction: column; text-align: center; }
 
@@ -1097,91 +926,24 @@
       Construindo com<br>precisão e propósito
     </h2>
 
-    <div class="about-grid">
-      <div class="about-text reveal reveal-delay-2">
-        <p>
-          Sou desenvolvedor <strong>especializado em backend</strong>, com domínio em 
-          Python, FastAPI, Node.js e bancos de dados relacionais e não-relacionais. 
-          Ao longo da minha jornada, construí sistemas que resolvem problemas reais — 
-          desde automações financeiras até soluções com inteligência artificial.
-        </p>
-        <p>
-          Acredito que um bom sistema vai além do código que funciona: ele precisa ser 
-          <strong>escalável, legível e sustentável</strong>. Trabalho com foco em 
-          arquitetura limpa, performance e entrega de valor concreto.
-        </p>
-        <p>
-          Tenho experiência prática com projetos em ambiente real, incluindo estágio no 
-          setor de TI onde desenvolvi soluções de monitoramento distribuído em produção.
-        </p>
-        <div class="about-highlights">
-          <div class="highlight-card reveal reveal-delay-1">
-            <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <div class="highlight-title">Backend Sólido</div>
-            <div class="highlight-desc">APIs REST, arquitetura limpa, otimização de consultas e sistemas escaláveis</div>
-          </div>
-          <div class="highlight-card reveal reveal-delay-2">
-            <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-            <div class="highlight-title">Dados & IA</div>
-            <div class="highlight-desc">Processamento de dados, RAG, embeddings vetoriais e integração com LLMs</div>
-          </div>
-          <div class="highlight-card reveal reveal-delay-3">
-            <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            <div class="highlight-title">Automação</div>
-            <div class="highlight-desc">Scripts, pipelines de dados, bots e integrações que eliminam trabalho manual</div>
-          </div>
-          <div class="highlight-card reveal reveal-delay-4">
-            <svg class="highlight-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <div class="highlight-title">Entrega Real</div>
-            <div class="highlight-desc">Projetos aplicados em produção, com resultados mensuráveis e impacto direto</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-bars reveal reveal-delay-3">
-        <div>
-          <div class="bar-label">
-            <span class="bar-name">Backend Development</span>
-            <span class="bar-pct">96%</span>
-          </div>
-          <div class="bar-track"><div class="bar-fill" data-width="96"></div></div>
-        </div>
-        <div>
-          <div class="bar-label">
-            <span class="bar-name">Banco de Dados (SQL / NoSQL)</span>
-            <span class="bar-pct">88%</span>
-          </div>
-          <div class="bar-track"><div class="bar-fill" data-width="88"></div></div>
-        </div>
-        <div>
-          <div class="bar-label">
-            <span class="bar-name">APIs REST & Integrações</span>
-            <span class="bar-pct">90%</span>
-          </div>
-          <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
-        </div>
-        <div>
-          <div class="bar-label">
-            <span class="bar-name">Automação & Scripting</span>
-            <span class="bar-pct">92%</span>
-          </div>
-          <div class="bar-track"><div class="bar-fill" data-width="92"></div></div>
-        </div>
-        <div>
-          <div class="bar-label">
-            <span class="bar-name">Frontend (React / Tailwind)</span>
-            <span class="bar-pct">65%</span>
-          </div>
-          <div class="bar-track"><div class="bar-fill" data-width="65"></div></div>
-        </div>
-        <div>
-          <div class="bar-label">
-            <span class="bar-name">DevOps (Docker / Linux)</span>
-            <span class="bar-pct">53%</span>
-          </div>
-          <div class="bar-track"><div class="bar-fill" data-width="53"></div></div>
-        </div>
-      </div>
+    <div class="about-text reveal reveal-delay-2">
+      <p>
+        Sou desenvolvedor <strong>especializado em backend</strong>, com domínio em
+        Python (FastAPI, Django) e Node.js. Construo APIs e sistemas que resolvem
+        problemas reais — de automações financeiras a soluções com inteligência artificial.
+      </p>
+      <p>
+        Tenho foco especial em <strong>bancos de dados relacionais</strong>, em particular
+        <strong>SQL Server</strong>: escrevo consultas em T-SQL, modelo esquemas, otimizo
+        queries e cuido de rotinas de backup/restore. Também trabalho com PostgreSQL e
+        MongoDB conforme a necessidade de cada projeto.
+      </p>
+      <p>
+        Acredito que um bom sistema vai além do código que funciona: ele precisa ser
+        <strong>escalável, legível e sustentável</strong>. Tenho experiência prática em
+        produção, incluindo estágio em TI onde desenvolvi um sistema de monitoramento
+        distribuído de conexões SQL Server entre filiais.
+      </p>
     </div>
   </div>
 </section>
@@ -1202,114 +964,94 @@
       </p>
     </div>
 
-    <!-- Featured Project 1 -->
-    <div class="project-grid reveal">
-      <div class="project-card">
-        <div class="project-image">
-          <img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800" alt="MFast" loading="lazy" />
-          <div class="project-image-overlay"></div>
-          <span class="project-tag-featured">Destaque</span>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-number">01 — RAG / AI</div>
-            <h3 class="project-title">MFast</h3>
-            <p class="project-desc">
-              Sistema RAG especializado em suporte técnico para a indústria de hardware. 
-              Transforma manuais e documentações técnicas em um assistente virtual inteligente, 
-              com processamento de documentos, embeddings vetoriais e geração de respostas 
-              contextualizadas com alta precisão técnica.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">FastAPI</span>
-              <span class="project-tag">LangChain</span>
-              <span class="project-tag">ChromaDB</span>
-              <span class="project-tag">React</span>
-              <span class="project-tag">Maritaca.ai</span>
-            </div>
+    <div class="projects-list">
+      <!-- Project 1 -->
+      <article class="project-row reveal">
+        <div class="project-row-num">01</div>
+        <div>
+          <div class="project-row-head">
+            <h3 class="project-row-title">MFast</h3>
+            <span class="project-row-cat">RAG / IA</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/Mr-Lucas-m/mfast-chat" target="_blank" rel="noopener" class="project-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Código
-            </a>
-            <a href="https://mfast-demo.vercel.app" target="_blank" rel="noopener" class="project-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Demo ao vivo
-            </a>
+          <p class="project-row-desc">
+            Sistema RAG que transforma manuais técnicos de hardware em um assistente virtual,
+            com busca vetorial e respostas contextualizadas de alta precisão.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">LangChain</span>
+            <span class="project-tag">ChromaDB</span>
+            <span class="project-tag">Maritaca.ai</span>
           </div>
         </div>
-      </div>
-    </div>
+        <div class="project-row-links">
+          <a href="https://github.com/Mr-Lucas-m/mfast-chat" target="_blank" rel="noopener" class="project-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código
+          </a>
+          <a href="https://mfast-demo.vercel.app" target="_blank" rel="noopener" class="project-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Demo
+          </a>
+        </div>
+      </article>
 
-    <!-- Featured Project 2 -->
-    <div class="project-grid reveal reveal-delay-1" style="margin-top:1.5rem;">
-      <div class="project-card" style="grid-template-columns:1fr 1fr;">
-        <div class="project-content" style="order:1;">
-          <div>
-            <div class="project-number">02 — Monitoramento</div>
-            <h3 class="project-title">MonFast</h3>
-            <p class="project-desc">
-              Sistema de monitoramento remoto de conexões com bancos de dados distribuídos, 
-              com alertas automáticos por e-mail e WhatsApp em caso de falha. 
-              Desenvolvido em estágio no Frango Americano para garantir confiabilidade 
-              entre filiais. Arquitetura flexível e adaptável a qualquer empresa ou serviço.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">FastAPI</span>
-              <span class="project-tag">PyODBC</span>
-              <span class="project-tag">Twilio</span>
-              <span class="project-tag">Schedule</span>
-            </div>
+      <!-- Project 2 -->
+      <article class="project-row reveal">
+        <div class="project-row-num">02</div>
+        <div>
+          <div class="project-row-head">
+            <h3 class="project-row-title">MonFast</h3>
+            <span class="project-row-cat">Monitoramento</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/Mr-Lucas-m/MonFast" target="_blank" rel="noopener" class="project-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Código
-            </a>
+          <p class="project-row-desc">
+            Monitoramento remoto de conexões com bancos <strong>SQL Server via ODBC/pyodbc</strong>,
+            com alertas automáticos por e-mail e WhatsApp em caso de falha. Criado em estágio
+            para garantir confiabilidade entre filiais.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag highlight">SQL Server</span>
+            <span class="project-tag">pyodbc</span>
+            <span class="project-tag">Twilio</span>
           </div>
         </div>
-        <div class="project-image" style="order:2;">
-          <img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800" alt="MonFast" loading="lazy" />
-          <div class="project-image-overlay"></div>
+        <div class="project-row-links">
+          <a href="https://github.com/Mr-Lucas-m/MonFast" target="_blank" rel="noopener" class="project-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código
+          </a>
         </div>
-      </div>
-    </div>
+      </article>
 
-    <!-- Project 3 -->
-    <div class="project-grid reveal reveal-delay-2" style="margin-top:1.5rem;">
-      <div class="project-card small-card">
-        <div class="project-image">
-          <img src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AjusteFast" loading="lazy" />
-          <div class="project-image-overlay"></div>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-number">03 — Automação Financeira</div>
-            <h3 class="project-title">AjusteFast</h3>
-            <p class="project-desc">
-              Automação completa que extrai dados de extratos bancários em PDF, filtra 
-              e organiza as informações de forma inteligente e exporta para planilhas estruturadas. 
-              Reduz drasticamente erros manuais e o tempo de análise financeira.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Pandas</span>
-              <span class="project-tag">PyWebView</span>
-              <span class="project-tag">Tabula</span>
-              <span class="project-tag">Bootstrap</span>
-            </div>
+      <!-- Project 3 -->
+      <article class="project-row reveal">
+        <div class="project-row-num">03</div>
+        <div>
+          <div class="project-row-head">
+            <h3 class="project-row-title">AjusteFast</h3>
+            <span class="project-row-cat">Automação</span>
           </div>
-          <div class="project-links">
-            <a href="https://github.com/Mr-Lucas-m/AjusteFAST" target="_blank" rel="noopener" class="project-link">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Código
-            </a>
+          <p class="project-row-desc">
+            Automação que extrai dados de extratos bancários em PDF e exporta planilhas
+            estruturadas, eliminando erros manuais e acelerando a análise financeira.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">PyWebView</span>
+            <span class="project-tag">Tabula</span>
           </div>
         </div>
-      </div>
+        <div class="project-row-links">
+          <a href="https://github.com/Mr-Lucas-m/AjusteFAST" target="_blank" rel="noopener" class="project-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código
+          </a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -1327,103 +1069,80 @@
       <div class="skill-category reveal reveal-delay-1">
         <div class="skill-cat-header">
           <div class="skill-cat-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
           <span class="skill-cat-title">Backend</span>
         </div>
-        <div class="skill-rows">
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Python · FastAPI · Django</span><span class="skill-row-pct">96%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="96"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Node.js · Express</span><span class="skill-row-pct">76%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="76"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">PostgreSQL</span><span class="skill-row-pct">91%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="91"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">MongoDB</span><span class="skill-row-pct">71%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="71"></div></div>
-          </div>
+        <div class="skill-chips">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">FastAPI</span>
+          <span class="skill-chip">Django</span>
+          <span class="skill-chip">Node.js</span>
+          <span class="skill-chip">Express</span>
+          <span class="skill-chip">APIs REST</span>
         </div>
       </div>
 
-      <!-- Frontend -->
+      <!-- Banco de Dados -->
       <div class="skill-category reveal reveal-delay-2">
         <div class="skill-cat-header">
           <div class="skill-cat-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
           </div>
-          <span class="skill-cat-title">Frontend</span>
+          <span class="skill-cat-title">Banco de Dados</span>
         </div>
-        <div class="skill-rows">
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">React · Next.js</span><span class="skill-row-pct">65%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">TypeScript</span><span class="skill-row-pct">49%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="49"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Tailwind CSS</span><span class="skill-row-pct">31%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="31"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Vue.js</span><span class="skill-row-pct">29%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="29"></div></div>
-          </div>
+        <div class="skill-chips">
+          <span class="skill-chip highlight">SQL Server</span>
+          <span class="skill-chip highlight">T-SQL</span>
+          <span class="skill-chip">PostgreSQL</span>
+          <span class="skill-chip">MongoDB</span>
         </div>
       </div>
 
-      <!-- DevOps -->
+      <!-- IA & Dados -->
       <div class="skill-category reveal reveal-delay-3">
-        <div class="skill-cat-header">
-          <div class="skill-cat-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          </div>
-          <span class="skill-cat-title">DevOps & Infra</span>
-        </div>
-        <div class="skill-rows">
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Linux</span><span class="skill-row-pct">55%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="55"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Docker</span><span class="skill-row-pct">52%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="52"></div></div>
-          </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Git · GitHub</span><span class="skill-row-pct">85%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI / Data -->
-      <div class="skill-category reveal reveal-delay-4">
         <div class="skill-cat-header">
           <div class="skill-cat-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           </div>
           <span class="skill-cat-title">IA & Dados</span>
         </div>
-        <div class="skill-rows">
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">LangChain · RAG</span><span class="skill-row-pct">78%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+        <div class="skill-chips">
+          <span class="skill-chip">LangChain</span>
+          <span class="skill-chip">RAG</span>
+          <span class="skill-chip">ChromaDB</span>
+          <span class="skill-chip">Embeddings</span>
+          <span class="skill-chip">Pandas</span>
+        </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="skill-category reveal reveal-delay-4">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
           </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">ChromaDB · Embeddings</span><span class="skill-row-pct">72%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div>
+          <span class="skill-cat-title">Frontend</span>
+        </div>
+        <div class="skill-chips">
+          <span class="skill-chip">React</span>
+          <span class="skill-chip">Next.js</span>
+          <span class="skill-chip">TypeScript</span>
+        </div>
+      </div>
+
+      <!-- DevOps -->
+      <div class="skill-category reveal">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
           </div>
-          <div>
-            <div class="skill-row-label"><span class="skill-row-name">Pandas · Automação</span><span class="skill-row-pct">88%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-          </div>
+          <span class="skill-cat-title">DevOps & Infra</span>
+        </div>
+        <div class="skill-chips">
+          <span class="skill-chip">Docker</span>
+          <span class="skill-chip">Linux</span>
+          <span class="skill-chip">Git</span>
         </div>
       </div>
 
@@ -1439,6 +1158,20 @@
           <span class="tool-pill">Slack</span>
           <span class="tool-pill">Hugging Face</span>
           <span class="tool-pill">Vercel</span>
+        </div>
+      </div>
+
+      <!-- Certificações -->
+      <div class="cert-section reveal">
+        <div class="tools-title">Certificações</div>
+        <div class="cert-item">
+          <div class="cert-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <div>
+            <div class="cert-name">Banco de Dados Expert: Linguagem SQL e Administração</div>
+            <div class="cert-meta">Udemy · 34h · 2026</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1457,82 +1190,51 @@
       Se você tem uma ideia, eu tenho a execução.
     </p>
 
-    <div class="contact-wrapper">
-      <!-- Info -->
-      <div class="reveal reveal-delay-1">
-        <a href="mailto:ti.lucas.mr@gmail.com" class="contact-info-item">
-          <div class="contact-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Email</div>
-            <div class="contact-info-value">ti.lucas.mr@gmail.com</div>
-          </div>
-        </a>
-
-        <a href="tel:+5591988246476" class="contact-info-item">
-          <div class="contact-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">WhatsApp / Telefone</div>
-            <div class="contact-info-value">+55 (91) 98824-6476</div>
-          </div>
-        </a>
-
-        <div class="contact-info-item" style="cursor:default;">
-          <div class="contact-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Localização</div>
-            <div class="contact-info-value">Pará, Brasil</div>
-          </div>
+    <div class="contact-methods reveal reveal-delay-1">
+      <a href="mailto:ti.lucas.mr@gmail.com" class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">ti.lucas.mr@gmail.com</div>
+        </div>
+      </a>
 
-        <div class="contact-socials">
-          <a href="https://github.com/Mr-Lucas-m" target="_blank" rel="noopener" class="contact-social-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/lucas-marques-dev-back-end/" target="_blank" rel="noopener" class="contact-social-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://wa.me/5591988246476" target="_blank" rel="noopener" class="contact-social-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            WhatsApp
-          </a>
+      <a href="tel:+5591988246476" class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8 9.91a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">WhatsApp / Telefone</div>
+          <div class="contact-info-value">+55 (91) 98824-6476</div>
+        </div>
+      </a>
+
+      <div class="contact-info-item" style="cursor:default;">
+        <div class="contact-info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Localização</div>
+          <div class="contact-info-value">Pará, Brasil</div>
         </div>
       </div>
+    </div>
 
-      <!-- Form -->
-      <div class="contact-form-card reveal reveal-delay-2">
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Nome</label>
-              <input type="text" id="name" name="name" placeholder="Seu nome" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="subject">Assunto</label>
-            <input type="text" id="subject" name="subject" placeholder="Sobre o que vamos falar?" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Mensagem</label>
-            <textarea id="message" name="message" placeholder="Descreva seu projeto ou oportunidade..." required></textarea>
-          </div>
-          <button type="submit" class="form-submit">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Enviar Mensagem
-          </button>
-        </form>
-      </div>
+    <div class="contact-socials reveal reveal-delay-2">
+      <a href="https://github.com/Mr-Lucas-m" target="_blank" rel="noopener" class="contact-social-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/lucas-marques-dev-back-end/" target="_blank" rel="noopener" class="contact-social-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://wa.me/5591988246476" target="_blank" rel="noopener" class="contact-social-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -1540,7 +1242,7 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-inner">
-    <p class="footer-copy">© 2024 Lucas Marques<span>.</span> Todos os direitos reservados.</p>
+    <p class="footer-copy">© 2026 Lucas Marques<span>.</span> Todos os direitos reservados.</p>
     <div class="footer-links">
       <a href="https://github.com/Mr-Lucas-m" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/lucas-marques-dev-back-end/" target="_blank">LinkedIn</a>
@@ -1548,9 +1250,6 @@
     </div>
   </div>
 </footer>
-
-<!-- Toast -->
-<div id="toast"></div>
 
 <script>
   // ── Header scroll ──
@@ -1573,80 +1272,17 @@
     });
   });
 
-  // ── Intersection Observer — reveal + bar fills ──
+  // ── Intersection Observer — reveal ──
   const revealEls = document.querySelectorAll('.reveal');
-  const barFills  = document.querySelectorAll('.bar-fill, .skill-bar-fill');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Animate bars inside this element
-        entry.target.querySelectorAll('.bar-fill, .skill-bar-fill').forEach(bar => {
-          bar.style.width = bar.dataset.width + '%';
-        });
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
-
   revealEls.forEach(el => observer.observe(el));
-
-  // Also observe bar fills directly
-  barFills.forEach(bar => {
-    const barObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          bar.style.width = bar.dataset.width + '%';
-          barObserver.unobserve(bar);
-        }
-      });
-    }, { threshold: 0.2 });
-    barObserver.observe(bar);
-  });
-
-  // ── Contact form ──
-  const form = document.getElementById('contactForm');
-  const toast = document.getElementById('toast');
-
-  function showToast(msg, type) {
-    toast.textContent = msg;
-    toast.className = 'show ' + type;
-    setTimeout(() => { toast.className = ''; }, 4000);
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
-
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      subject: form.subject.value,
-      message: form.message.value,
-    };
-
-    try {
-      const res = await fetch('http://localhost:8000/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      if (res.ok) {
-        showToast('Mensagem enviada com sucesso!', 'success');
-        form.reset();
-      } else {
-        showToast('Erro ao enviar. Tente novamente.', 'error');
-      }
-    } catch {
-      showToast('Erro de conexão. Tente outro canal de contato.', 'error');
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar Mensagem`;
-    }
-  });
 
   // ── Smooth nav ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
